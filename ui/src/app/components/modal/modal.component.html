@@ -1,0 +1,13 @@
+<div class="background" [ngClass]="{ 'show': show }">
+    <div class="fade" (click)="close(true)"></div>
+    <div class="modal m-center rows" [class]="className">
+        <header class="cols">
+            <icon class="m-vert" *ngIf="icon">{{ icon }}</icon>
+            <div class="title">{{ title }}</div>
+            <icon-btn class="close m-left m-vert" (click)="close(false)" type="inline">close</icon-btn>
+        </header>
+        <main class="fill" *ngIf="show">
+            <ng-content></ng-content>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.area {
+    aside {
+        width: 300px;
+        padding: 5px;
+        overflow-y: auto;
+    
+        h1 {
+            text-align: center;
+        }
+    
+        .input {
+            display: flex;
+            flex-flow: column;
+            padding: 10px;
+    
+            label { 
+                display: block;
+                padding-left: 5px;
+            }
+    
+            input {
+                width: 100%;
+            }
+        }
+    
+        .replacer {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            .text { padding-left: 10px; }
+            .description { font-size: 16px; }
+            &.active, &:hover { background-color: var(--accent-2); }
+        }
+    }
+    
+    main {
+        overflow: auto;
+        max-width: calc(100vw - 600px);
+        background-color: var(--bg-card-2);
+    }
+}
+
+footer {
+    border-top: 1px solid var(--brd-color-accent);
+    padding: 5px;
+    padding-bottom: 10px;
+}

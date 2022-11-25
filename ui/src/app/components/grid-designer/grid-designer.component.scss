@@ -1,0 +1,13 @@
+.col {
+    border-left: 1px solid var(--brd-color-accent);
+    border-top: 1px solid var(--brd-color-accent);
+    cursor: pointer;
+
+    &:last-child {
+        border-right: 1px solid var(--brd-color-accent);
+    }
+}
+
+.row:last-child {
+    border-bottom: 1px solid var(--brd-color-accent);
+}

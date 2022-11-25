@@ -1,0 +1,79 @@
+<container *ngIf="level" class="rows">
+    <div class="area cols">
+        <aside>
+            <h1>Level Details</h1>
+            <div class="input">
+                <label>Id:</label>
+                <input type="text" placeholder="Level ID" [(ngModel)]="level.id" />
+            </div>
+            <div class="input">
+                <label>Name:</label>
+                <input type="text" placeholder="Level Name" [(ngModel)]="level.name" />
+            </div>
+            <div class="input">
+                <label>Ordinal:</label>
+                <input type="number" placeholder="Level Ordinal" [(ngModel)]="level.ordinal" />
+            </div>
+            <div class="input">
+                <label>Grid Size:</label>
+                <input placeholder="Max Number of Moves" readOnly [value]="level.gridSize" />
+            </div>
+            <div class="input">
+                <label>Font Size:</label>
+                <input placeholder="Font Size" [(ngModel)]="level.fontSize" />
+            </div>
+            <div class="input">
+                <label>Max Number of Moves:</label>
+                <input type="number" placeholder="Max Number of Moves" [(ngModel)]="level.maxMoves" />
+            </div>
+            <div class="input">
+                <label>Max Power Count:</label>
+                <input type="number" placeholder="Max Power Count" [(ngModel)]="level.maxPower" />
+            </div>
+            <div class="input">
+                <label>Description:</label>
+                <textarea placeholder="Level Description" [(ngModel)]="level.description"></textarea>
+            </div>
+            <div class="input">
+                <label>Starting Code Snippet:</label>
+                <textarea placeholder="Starting Code Snippet" [(ngModel)]="level.startingCode"></textarea>
+            </div>
+            <div class="input">
+                <label>Resolution Code:</label>
+                <textarea placeholder="Resolution Code Snippet" [(ngModel)]="level.finishingCode"></textarea>
+            </div>
+        </aside>
+        <main class="fill rows">
+            <div class="m-center">
+                <cc-play-space [level]="level" (cell-clicked)="tileClicked($event)"></cc-play-space>
+            </div>
+        </main>
+        <aside>
+            <h1>Level Editor</h1>
+            <div class="rows replacer" [ngClass]="{ 'active': replacer?.key === icon.key }" *ngFor="let icon of icons" (click)="replacer = icon">
+                <div class="cols">
+                    <div class="icon"><icon>{{ icon.key }}</icon></div>
+                    <div class="text m-vert">{{ icon.name }}</div>
+                </div>
+                <div class="description">{{ icon.description }}</div>
+            </div>
+        </aside>
+    </div>
+    <footer class="cols">
+        <icon-btn class="m-vert" text="Export" type="rounded" (onclick)="export()">download</icon-btn>
+        <icon-btn class="m-vert" text="Import" type="rounded" (onclick)="startImport()">publish</icon-btn>
+        
+        <icon-btn class="m-center" text="Resize Grid" type="rounded">aspect_ratio</icon-btn>
+
+        <icon-btn class="m-vert" text="Cancel" type="rounded">delete</icon-btn>
+        <icon-btn class="m-vert" text="Save" type="rounded">save</icon-btn>
+    </footer>
+</container>
+
+<modal title="Import Level" icon="publish" #importpop>
+    <div class="input">
+        <label>Import Data:</label>
+        <textarea [(ngModel)]="importData"></textarea>
+    </div>
+    <icon-btn class="m-vert m-left" text="Import" (click)="import()">publish</icon-btn>
+</modal>

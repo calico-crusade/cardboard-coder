@@ -1,0 +1,20 @@
+<div class="play-space">
+    <ng-container *ngFor="let xc of level.board; let x = index">
+        <div class="row" *ngIf="x === 0">
+            <div class="col"></div>
+            <div class="col" [style.height]="level.fontSize || '30px'" *ngFor="let yc of xc; let i = index">
+                <span>{{ i + 1 }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <ng-container *ngFor="let yc of xc; let y = index">
+                <div class="col" [style.width]="level.fontSize || '30px'" *ngIf="y === 0">
+                    <span>{{ x + 1 }}</span>
+                </div>
+                <div class="col" [style.width]="level.fontSize || '30px'" [class]="yc.key" [ngClass]="{'disabled': yc.locked }" (click)="clicked(x, y)">
+                    <icon [fill]="icons[yc.key].name === 'wall'" [font-size]="level.fontSize || '30px'">{{ icons[yc.key].key }}</icon>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

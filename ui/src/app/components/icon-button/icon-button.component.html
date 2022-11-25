@@ -1,0 +1,6 @@
+<button (click)="onclick.emit()" class="container" [class]="type" [ngClass]="{ 'in-group': inGroup }" [disabled]="isDisabled">
+    <div class="icon">
+        <icon [fill]="fill" [font-size]="size" [spin]="spin"><ng-content></ng-content></icon>
+    </div>
+    <div class="text" [style.font-size]="size" *ngIf="text">{{ text }}</div>
+</button>

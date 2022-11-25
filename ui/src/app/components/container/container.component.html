@@ -1,0 +1,22 @@
+<div class="container">
+    <main class="rows" *ngIf="loading">
+        <div class="m-center loading-icon">
+            <magic-circle width="100%" height="100%" spin-speed="10s">
+                <mc-ring text="Some fancy stuff is happening...">
+                    <mc-square [total]="3" [index]="0"></mc-square>
+                    <mc-square [total]="3" [index]="1"></mc-square>
+                    <mc-square [total]="3" [index]="2">
+                        <mc-ring text="Loading... Loading... Loading... Loading... ">
+                            <mc-square [total]="3" [index]="0"></mc-square>
+                            <mc-square [total]="3" [index]="1"></mc-square>
+                            <mc-square [total]="3" [index]="2"></mc-square>
+                        </mc-ring>
+                    </mc-square>
+                </mc-ring>
+            </magic-circle>
+        </div>
+    </main>
+    <main class="fill" *ngIf="!loading" [class]="className" [ngClass]="{ 'scroll': scroll }">
+        <ng-content></ng-content>
+    </main>
+</div>

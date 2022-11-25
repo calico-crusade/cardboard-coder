@@ -1,0 +1,23 @@
+<container class="rows">
+    <header></header>
+    <main class="rows">
+        <div class="cols row" *ngFor="let xc of grid; let x = index">
+            <div class="fill col" *ngFor="let yc of xc; let y = index" (click)="set(x, y)">
+                <icon>{{ yc }}</icon>
+            </div>
+        </div>
+    </main>
+    <footer class="cols">
+        <!-- <input type="number" placeholder="Grid Size" [(ngModel)]="gridSize" />
+        <icon-btn type="inline" text="Generate">start</icon-btn> -->
+        <icon-btn type="inline" text="Selected" (onclick)="toggleSelected()">{{ selected }}</icon-btn>
+        <div class="m-center"></div>
+        <icon-btn type="inline" text="Save" (onclick)="save()">save</icon-btn>
+        <icon-btn type="inline" text="Load" (onclick)="load()">download</icon-btn>
+    </footer>
+</container>
+
+<modal #loadpopup>
+    <textarea [(ngModel)]="loadGrid"></textarea>
+    <icon-btn text="Load" (onclick)="doLoad()">download</icon-btn>
+</modal>

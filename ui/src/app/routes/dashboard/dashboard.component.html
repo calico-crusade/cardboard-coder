@@ -1,0 +1,24 @@
+<container class="rows">
+    <header>
+        <icon-btn text="Compile" type="inline" (onclick)="compile()">terminal</icon-btn>
+        <icon-btn text="Designer" type="inline" (onclick)="designer()">edit</icon-btn>
+    </header>
+    <main class="fill">
+        <nu-monaco-editor height="100%" [(ngModel)]="code" [options]="options" (event)="onInit($event)"></nu-monaco-editor>
+    </main>
+</container>
+
+<modal title="Compilation Results" icon="terminal" #actionspop>
+    <ol>
+        <li *ngFor="let action of actions">
+            <pre>exec {{ action.name }} >> {{ action.parameters.join(' ') }}</pre>
+        </li>
+    </ol>
+    <div class="error" *ngIf="error">
+        Compiler Error: {{ error }}
+    </div>
+</modal>
+
+<modal title="Designer" icon="terminal" #designerpop>
+    <cc-grid-designer></cc-grid-designer>
+</modal>
