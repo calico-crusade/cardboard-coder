@@ -12,11 +12,14 @@ export class IconButtonComponent {
     @Input() type: AvailableTypes = 'flat';
     @Input() text?: string;
     @Input() disabled?: string;
-    @Output() onclick: EventEmitter<void> = new EventEmitter();
 
     @Input() fill: boolean = false;
     @Input() spin: boolean = false;
     @Input('font-size') size?: string;
+
+    @Input() routerLink: any[] = [];
+
+    @Output() onclick: EventEmitter<void> = new EventEmitter();
 
     inGroup: boolean = false;
     get isDisabled() { return this.disabled === ''; }

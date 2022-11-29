@@ -1,8 +1,11 @@
 <header class="cols">
     <p class="m-right m-vert">Cardboard Coder</p>
-    <icon-btn type="inline">home</icon-btn>
+    <icon-btn type="inline" [routerLink]="['/dashboard']">home</icon-btn>
     <icon-btn type="inline">help</icon-btn>
+    <icon-btn type="inline" [routerLink]="['/level-designer']">draw</icon-btn>
 </header>
 <main class="fill">
     <router-outlet></router-outlet>
 </main>
+
+<cc-confirm-modal></cc-confirm-modal>

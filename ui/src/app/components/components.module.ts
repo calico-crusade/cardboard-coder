@@ -10,6 +10,10 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
 import { ContainerComponent } from './container/container.component';
 import { GridDesignerComponent } from './grid-designer/grid-designer.component';
 import { PlaySpaceComponent } from './play-space/play-space.component';
+import { MarkdownDirective } from "./markdown.directive";
+import { IconDropdownComponent } from './icon-dropdown/icon-dropdown.component';
+import { ConfirmModalComponent } from './modal/confirm-modal/confirm-modal.component';
+import { RouterModule } from "@angular/router";
 
 const EXPORTS = [
     IconComponent,
@@ -18,7 +22,10 @@ const EXPORTS = [
     ContainerComponent, 
     GridDesignerComponent,
     PlaySpaceComponent,
-    ModalComponent
+    ModalComponent,
+    IconDropdownComponent, 
+    ConfirmModalComponent,
+    MarkdownDirective
 ];
 
 @NgModule({
@@ -29,7 +36,8 @@ const EXPORTS = [
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        MagicCircleModule
+        MagicCircleModule,
+        RouterModule
     ]
 })
 export class ComponentsModule { }

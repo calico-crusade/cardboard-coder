@@ -1,0 +1,15 @@
+header {
+    border-bottom: 1px solid var(--brd-color-accent);
+}
+
+main {
+    .editor, .play-space {
+        max-width: 50vw;
+        overflow: hidden;
+    }
+
+    .play-space {
+        overflow: auto;
+        padding: 10px;
+    }
+}

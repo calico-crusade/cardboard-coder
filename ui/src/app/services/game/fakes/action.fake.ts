@@ -22,4 +22,24 @@ declare class CharacterModel {
      * @param power How much power to put behind the attack
      */
     static attack(dir: 'forward' | 'backward' | 'left' | 'right', power: number): void;
+
+    /** 
+     * Moves the character up a square 
+     */
+    static up(): void;
+
+    /** 
+     * Moves the character down a square
+     */
+    static down(): void;
+
+    /** 
+     * Moves the character left a square 
+     */
+    static left(): void;
+
+    /** 
+     * Moves the character right a square 
+     */
+    static right(): void;
 }

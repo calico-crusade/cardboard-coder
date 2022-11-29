@@ -11,12 +11,16 @@ import { ComponentsModule } from './components';
 import { NuMonacoEditorModule } from '@ng-util/monaco-editor';
 import { DashboardComponent } from './routes/dashboard/dashboard.component';
 import { LevelDesignerComponent } from './routes/level-designer/level-designer.component';
+import { LevelComponent } from './routes/level/level.component';
+import { LevelSelectorComponent } from './routes/level-selector/level-selector.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         DashboardComponent,
         LevelDesignerComponent,
+        LevelComponent,
+        LevelSelectorComponent,
     ],
     imports: [
         BrowserModule,

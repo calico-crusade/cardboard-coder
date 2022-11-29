@@ -1,0 +1,42 @@
+<container [loading]="loading" class="rows">
+    <header class="cols">
+        <icon-btn text="Play" type="inline" (onclick)="play()">play_arrow</icon-btn>
+        <icon-btn text="Compile" type="inline" (onclick)="compile()">terminal</icon-btn>
+        <icon-dropdown text="Settings" icon="settings" type="inline">
+            <icon-btn text="Play" type="inline" (onclick)="compile()">play_arrow</icon-btn>
+            <icon-btn text="Compile" type="inline" (onclick)="compile()">terminal</icon-btn>
+        </icon-dropdown>
+
+        <div class="m-center"></div>
+
+        <icon-btn text="Help" type="inline" (onclick)="reset()">question_mark</icon-btn>
+        <icon-btn text="Reset Board" type="inline" (onclick)="reset(false)">sync</icon-btn>
+        <icon-btn text="Reveal Solution" type="inline" (onclick)="code = level.finishingCode">visibility</icon-btn>
+    </header>
+    <main class="fill cols">
+        <section class="editor fill">
+            <nu-monaco-editor height="100%" [(ngModel)]="code" (event)="nuOnInit($event)"
+                [options]="{'theme': 'vs-dark', 'language': 'javascript'}" #editor></nu-monaco-editor>
+        </section>
+        <section class="play-space fill rows">
+            <div class="level-details">
+                <h2>{{ level.name }}</h2>
+                <div class="description" [markdown]="level.description"></div>
+            </div>
+            <div class="m-center">
+                <cc-play-space [level]="level"></cc-play-space>
+            </div>
+        </section>
+    </main>
+</container>
+
+<modal title="Compilation Results" icon="terminal" #actionspop>
+    <ol>
+        <li *ngFor="let action of compilation">
+            <pre>exec {{ action.name }} >> {{ action.parameters.join(' ') }}</pre>
+        </li>
+    </ol>
+    <div class="error" *ngIf="error">
+        Compiler Error: {{ error }}
+    </div>
+</modal>

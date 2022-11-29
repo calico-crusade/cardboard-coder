@@ -9,8 +9,12 @@ import { Cell, DEFAULT_ICONS, Level, LevelIcon, Tile } from 'src/app/services';
 export class LevelDesignerComponent implements OnInit {
 
     private importIns?: ModalInstance;
-    @Input() level?: Level;
     @ViewChild('importpop') importPopup!: ModalComponent;
+
+    private resizeIns?: ModalInstance;
+    @ViewChild('resizepop') resizePopup!: ModalComponent;
+
+    @Input() level?: Level;
 
     importData: string = '';
     replacer?: LevelIcon;
@@ -76,9 +80,9 @@ export class LevelDesignerComponent implements OnInit {
             board: board,
             startingCode: '',
             finishingCode: '',
-            availableActions: ['move', 'jump', 'attack', 'pickup', 'use'],
+            availableActions: ['move', 'jump', 'attack', 'pickup', 'use', 'left', 'right', 'up', 'down'],
             maxMoves: 999,
-            maxPower: 999,
+            maxStamina: 999,
             gridSize: size,
             icons: DEFAULT_ICONS
         };
@@ -96,8 +100,17 @@ export class LevelDesignerComponent implements OnInit {
 
     import() {
         const data = JSON.parse(this.importData);
-        console.log('Imported Data', { data });
         this.level = data;
         this.importIns?.cancel();
+    }
+
+    startResize() {
+        this.resizeIns = this._mdl.show(this.resizePopup);
+    }
+
+    resize() {
+        if (!this.level) return;
+        this.level = this.generateLevel(this.level.gridSize);
+        this.resizeIns?.cancel();
     }
 }

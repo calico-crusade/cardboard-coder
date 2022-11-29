@@ -1,0 +1,9 @@
+<modal #prompt [title]="request?.title" [icon]="request?.icon">
+    <div class="container rows">
+        <div class="description" [markdown]="request?.description"></div>
+        <div class="buttons m-left">
+            <icon-btn *ngFor="let btn of request?.buttons" [type]="btn.type || 'flat'"
+                      [text]="btn.text" (click)="click(btn.value)">{{ btn.icon }}</icon-btn>
+        </div>
+    </div>
+</modal>

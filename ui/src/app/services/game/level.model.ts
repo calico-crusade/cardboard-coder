@@ -32,7 +32,7 @@ export interface Level {
     finishingCode: string;
     availableActions: string[];
     maxMoves: number;
-    maxPower: number;
+    maxStamina: number;
     gridSize: number;
     icons?: LevelIcons;
     fontSize?: string;

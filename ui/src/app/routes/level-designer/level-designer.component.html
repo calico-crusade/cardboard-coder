@@ -27,8 +27,8 @@
                 <input type="number" placeholder="Max Number of Moves" [(ngModel)]="level.maxMoves" />
             </div>
             <div class="input">
-                <label>Max Power Count:</label>
-                <input type="number" placeholder="Max Power Count" [(ngModel)]="level.maxPower" />
+                <label>Max Stamina:</label>
+                <input type="number" placeholder="Max Stamina" [(ngModel)]="level.maxStamina" />
             </div>
             <div class="input">
                 <label>Description:</label>
@@ -63,7 +63,7 @@
         <icon-btn class="m-vert" text="Export" type="rounded" (onclick)="export()">download</icon-btn>
         <icon-btn class="m-vert" text="Import" type="rounded" (onclick)="startImport()">publish</icon-btn>
         
-        <icon-btn class="m-center" text="Resize Grid" type="rounded">aspect_ratio</icon-btn>
+        <icon-btn class="m-center" text="Resize Grid" type="rounded" (onclick)="startResize()">aspect_ratio</icon-btn>
 
         <icon-btn class="m-vert" text="Cancel" type="rounded">delete</icon-btn>
         <icon-btn class="m-vert" text="Save" type="rounded">save</icon-btn>
@@ -76,4 +76,13 @@
         <textarea [(ngModel)]="importData"></textarea>
     </div>
     <icon-btn class="m-vert m-left" text="Import" (click)="import()">publish</icon-btn>
+</modal>
+
+<modal title="Resize Grid" icon="aspect_ratio" #resizepop>
+    <div class="input" *ngIf="level">
+        <label>Grid Size: </label>
+        <input type="number" [(ngModel)]="level.gridSize" />
+    </div>
+    <p>Please note; this will clear anything currently on the grid.</p>
+    <icon-btn class="m-vert m-left" text="Resize Grid" (click)="resize()">aspect_ratio</icon-btn>
 </modal>

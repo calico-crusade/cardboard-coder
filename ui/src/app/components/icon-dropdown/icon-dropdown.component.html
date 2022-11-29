@@ -1,0 +1,10 @@
+<button (click)="expose()" class="container" [class]="type" [ngClass]="{ 'in-group': inGroup }" [disabled]="isDisabled">
+    <div class="icon">
+        <icon [fill]="fill" [font-size]="size" [spin]="spin">{{ icon }}</icon>
+    </div>
+    <div class="text" [style.font-size]="size" *ngIf="text">{{ text }}</div>
+</button>
+
+<modal [title]="text" [icon]="icon" #modal>
+    <ng-content></ng-content>
+</modal>

@@ -1,0 +1,9 @@
+<container [loading]="loading" class="rows">
+    <h2>Level Selector</h2>
+    <div class="level-selector m-center rows">
+        <a class="rows" [routerLink]="['/level', level.id]" *ngFor="let level of levels">
+            <div class="title">{{ level.ordinal }}. <b>{{ level.name }}</b></div>
+            <div class="description" [markdown]="level.description"></div>
+        </a>
+    </div>
+</container>
